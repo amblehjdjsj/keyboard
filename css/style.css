@@ -1,0 +1,95 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.keyboard {
+    display: flex;
+    flex-direction: column; /* 垂直排列两行按键 */
+    gap: 10px;
+}
+
+.key-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center; /* 居中排列按键 */
+}
+
+.key {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255, 154, 158, 0.7);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #84fab0, #8fd3f4, #a6c0fe, #f68084, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%; /* 扩大背景尺寸 */
+    animation: flowAnimation 10s linear infinite; /* 流动渐变动画 */
+}
+
+/* 流动渐变动画 */
+@keyframes flowAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 按下时的效果 */
+.key.active {
+    transform: scale(1.1); /* 按键放大 */
+    animation: glow 0.5s infinite, rainbowSpread 0.5s ease-out; /* 动态发光 + 彩虹扩散 */
+    border-radius: 50%; /* 确保扩散效果是圆形 */
+}
+
+/* 彩虹扩散动画 */
+@keyframes rainbowSpread {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 99, 71, 0.7), /* 红色 */
+                    0 0 0 0 rgba(255, 165, 0, 0.7), /* 橙色 */
+                    0 0 0 0 rgba(255, 255, 0, 0.7), /* 黄色 */
+                    0 0 0 0 rgba(0, 128, 0, 0.7), /* 绿色 */
+                    0 0 0 0 rgba(0, 0, 255, 0.7), /* 蓝色 */
+                    0 0 0 0 rgba(75, 0, 130, 0.7), /* 靛蓝色 */
+                    0 0 0 0 rgba(148, 0, 211, 0.7); /* 紫色 */
+    }
+    100% {
+        box-shadow: 0 0 0 10px rgba(255, 99, 71, 0), /* 红色 */
+                    0 0 0 20px rgba(255, 165, 0, 0), /* 橙色 */
+                    0 0 0 30px rgba(255, 255, 0, 0), /* 黄色 */
+                    0 0 0 40px rgba(0, 128, 0, 0), /* 绿色 */
+                    0 0 0 50px rgba(0, 0, 255, 0), /* 蓝色 */
+                    0 0 0 60px rgba(75, 0, 130, 0), /* 靛蓝色 */
+                    0 0 0 70px rgba(148, 0, 211, 0); /* 紫色 */
+    }
+}
+
+/* 动态发光动画 */
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 154, 158, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(255, 154, 158, 1), 0 0 50px rgba(255, 154, 158, 1);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(255, 154, 158, 0.7);
+    }
+}

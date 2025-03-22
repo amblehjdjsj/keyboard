@@ -5,7 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (event) => {
         const keyPressed = event.key.toUpperCase();
         const keyElement = document.querySelector(`.key[data-key="${keyPressed}"]`);
-
+        const audioPath = keyElement.getAttribute('data-audio');
+        const audio = new Audio(audioPath); // 动态创建音频对象
+        audio.currentTime = 0; // 重置播放时间
+        audio.play(); // 播放音频
         if (keyElement) {
             keyElement.classList.add('active');
             
